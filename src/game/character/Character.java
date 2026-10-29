@@ -1,10 +1,10 @@
 package game.character;
 
-public class abstract Character {
-    String name;
-    int maxHP;
-    int level;
-    double xp;
+public abstract class Character {
+    private String name;
+    private int maxHP;
+    private int level;
+    private double xp;
 
     public Character() {
     }
@@ -16,11 +16,27 @@ public class abstract Character {
         this.xp = xp;
     }
 
-    public int attack(){
+    public String getName() {
+        return name;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public double getXp() {
+        return xp;
+    }
+
+    public int attack() {
         return 0;
     }
 
-    public int defend(){
+    public int defend() {
         return 0;
     }
 
