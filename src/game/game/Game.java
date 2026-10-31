@@ -9,6 +9,10 @@ public class Game {
     static Player player;
 
     public static boolean isRunning;
+
+    //Story element
+    public static int place = 0, act;
+    public static String[] places = {"Den tysta skogen", "De övergivna byarna", "Älven och fjällen", "Kebnekaises topp"};
     //Metod för att få input i konsolen
     public static int readInt(String prompt, int useChoices) {
         int input;
@@ -58,7 +62,7 @@ public class Game {
         clearConsole();
         printSeperator(40);
         printSeperator(30);
-        System.out.println("Drakarnas Värld");
+        System.out.println("Den Stora Tystnaden");
         System.out.println("Ett spel av Johannes Svensson");
         printSeperator(30);
         printSeperator(40);
@@ -79,27 +83,36 @@ public class Game {
                 nameSet = true;
         } while (!nameSet);
 
+        Story.printIntro();
+
         //Skapar en ny spelare med namnet
         player = new Player(name);
+
+        //print första story
+        Story.printFirstActIntro();
         isRunning = true;
 
         gameLoop();
     }
+
     //Metod för att fortsätta resan
-    public static void continueJourney(){
+    public static void continueJourney() {
 
     }
-    public static void characterInfo(){
+
+    public static void characterInfo() {
         clearConsole();
         printHeading("KARAKTÄRS INFORMATION");
         System.out.println(player.getName() + "\tHP: " + player.getHp() + "/" + player.getMaxHP());
         printSeperator(20);
         System.out.println("XP: " + player.getXp());
+        printSeperator(20);
         //Skriver ut valda skills
-        if (player.numAtkUpgrades > 0){
+        if (player.numAtkUpgrades > 0) {
             System.out.println("Offensiva skills: " + player.atkUpgrades[player.numAtkUpgrades - 1]);
-            printSeperator(20);}
-        if (player.numDefUpgrades > 0){
+            printSeperator(20);
+        }
+        if (player.numDefUpgrades > 0) {
             System.out.println("Defensiva skills: " + player.defUpgrades[player.numDefUpgrades - 1]);
             printSeperator(20);
         }
@@ -107,9 +120,9 @@ public class Game {
     }
 
     //Metod som skriver ut mainmenu
-    public static void printMenu(){
+    public static void printMenu() {
         clearConsole();
-        printHeading("MENU");
+        printHeading(places[place]);
         System.out.println("Välj ett val: ");
         printSeperator(20);
         System.out.println("(1) Fortsätt din resa");
@@ -119,8 +132,8 @@ public class Game {
     }
 
     //Main gameloop
-    public static void gameLoop (){
-        while(isRunning) {
+    public static void gameLoop() {
+        while (isRunning) {
             printMenu();
             int input = readInt("-> ", 3);
             if (input == 1) {
@@ -128,9 +141,9 @@ public class Game {
             } else if (input == 2)
                 characterInfo();
             else isRunning = false;
-            }
         }
     }
+}
 
 
 
