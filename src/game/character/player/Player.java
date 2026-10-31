@@ -16,8 +16,8 @@ public class Player extends Character {
         chooseTrait();
     }
 
-    public String[] atkUpgrades = {"Strength", "Godlike Strength", "Magic", "Rouge"};
-    public String[] defUpgrades = {"Armor", "Heavy Armor", "Holy Shield", "Stealth"};
+    public String[] atkUpgrades = {"Björnkraft", "Jättens vrede", "Runmagi", "Nattens klinga"};
+    public String[] defUpgrades = {"Barkpansar", "Trollhud", "Norrskensskölden", "Dimmans slöja"};
 
 
 
