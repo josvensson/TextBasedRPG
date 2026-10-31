@@ -1,0 +1,56 @@
+@startuml
+class game.character.enemy.Monster {
+}
+class game.items.Item {
+}
+class Main {
++ {static} void main(String[])
+}
+
+abstract class game.character.Character {
+- String name
+- int maxHP
+- int level
+- double xp
++ String getName()
++ int getMaxHP()
++ int getLevel()
++ double getXp()
++ int attack()
++ int defend()
+}
+
+
+class game.character.player.Player {
++ int numAtkUpgrades
++ int numDefUpgrades
++ String[] atkUpgrades
++ String[] defUpgrades
++ int attack()
++ int defend()
++ void chooseTrait()
+}
+
+
+class game.menu.Menu {
+}
+class game.game.Game {
+~ {static} Scanner scanner
+~ {static} Player player
++ {static} int readInt(String,int)
++ {static} void clearConsole()
++ {static} void printSeperator(int)
++ {static} void printHeading(String)
++ {static} void anythingToContinue()
++ {static} void startGame()
+}
+
+
+class game.map.Map {
+}
+class game.character.player.Inventory {
+}
+
+
+game.character.Character <|-- game.character.player.Player
+@enduml

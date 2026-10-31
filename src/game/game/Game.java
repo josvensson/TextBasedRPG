@@ -8,6 +8,7 @@ public class Game {
     static Scanner scanner = new Scanner(System.in);
     static Player player;
 
+    public static boolean isRunning;
     //Metod för att få input i konsolen
     public static int readInt(String prompt, int useChoices) {
         int input;
@@ -80,9 +81,61 @@ public class Game {
 
         //Skapar en ny spelare med namnet
         player = new Player(name);
+        isRunning = true;
+
+        gameLoop();
+    }
+    //Metod för att fortsätta resan
+    public static void continueJourney(){
 
     }
-}
+    public static void characterInfo(){
+        clearConsole();
+        printHeading("KARAKTÄRS INFORMATION");
+        System.out.println(player.getName() + "\tHP: " + player.getHp() + "/" + player.getMaxHP());
+        printSeperator(20);
+        System.out.println("XP: " + player.getXp());
+        //Skriver ut valda skills
+        if (player.numAtkUpgrades > 0){
+            System.out.println("Offensiva skills: " + player.atkUpgrades[player.numAtkUpgrades - 1]);
+            printSeperator(20);}
+        if (player.numDefUpgrades > 0){
+            System.out.println("Defensiva skills: " + player.defUpgrades[player.numDefUpgrades - 1]);
+            printSeperator(20);
+        }
+        anythingToContinue();
+    }
+
+    //Metod som skriver ut mainmenu
+    public static void printMenu(){
+        clearConsole();
+        printHeading("MENU");
+        System.out.println("Välj ett val: ");
+        printSeperator(20);
+        System.out.println("(1) Fortsätt din resa");
+        System.out.println("(2) Karaktärs information");
+        System.out.println("(3) Stäng av spelet");
+
+    }
+
+    //Main gameloop
+    public static void gameLoop (){
+        while(isRunning) {
+            printMenu();
+            int input = readInt("-> ", 3);
+            if (input == 1) {
+                continueJourney();
+            } else if (input == 2)
+                characterInfo();
+            else isRunning = false;
+            }
+        }
+    }
+
+
+
+
+
 
 
 
