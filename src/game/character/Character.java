@@ -5,12 +5,15 @@ public abstract class Character {
     private int hp;
     private int maxHP;
     private int level;
-    private double xp;
+    private int xp;
 
-    public Character() {
+    public Character(String name, int maxHP, int xp) {
+        this.name = name;
+        this.maxHP = maxHP;
+        this.xp = xp;
     }
 
-    public Character(String name, int hp, int maxHP, int level, double xp) {
+    public Character(String name, int hp, int maxHP, int level, int xp) {
         this.name = name;
         this.hp = hp;
         this.maxHP = maxHP;
