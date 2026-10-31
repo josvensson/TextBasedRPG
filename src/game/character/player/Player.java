@@ -9,7 +9,7 @@ public class Player extends Character {
     public int numDefUpgrades;
 
     public Player(String name) {
-        super(name, 100, 1, 0);
+        super(name, 100, 100, 1, 0);
         //Setting # av uppgraderar till 0
         this.numAtkUpgrades = 0;
         this.numDefUpgrades = 0;
@@ -19,11 +19,7 @@ public class Player extends Character {
     public String[] atkUpgrades = {"Strength", "Godlike Strength", "Magic", "Rouge"};
     public String[] defUpgrades = {"Armor", "Heavy Armor", "Holy Shield", "Stealth"};
 
-    public Player(String name, int maxHP, int level, double xp) {
-        //Kallar på superklass
-        super(name, maxHP, level, xp);
 
-    }
 
     @Override
     public int attack() {

@@ -2,6 +2,7 @@ package game.character;
 
 public abstract class Character {
     private String name;
+    private int hp;
     private int maxHP;
     private int level;
     private double xp;
@@ -9,8 +10,9 @@ public abstract class Character {
     public Character() {
     }
 
-    public Character(String name, int maxHP, int level, double xp) {
+    public Character(String name, int hp, int maxHP, int level, double xp) {
         this.name = name;
+        this.hp = hp;
         this.maxHP = maxHP;
         this.level = level;
         this.xp = xp;
@@ -18,6 +20,10 @@ public abstract class Character {
 
     public String getName() {
         return name;
+    }
+
+    public int getHp(){
+        return hp;
     }
 
     public int getMaxHP() {
