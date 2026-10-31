@@ -9,10 +9,16 @@ public class Game {
     static Player player;
 
     public static boolean isRunning;
+    //Random möten
+    public static String[] encounters = {"Battle", "Battle", "Battle", "Rest", "Rest"};
+
+    //Fiende namn
+    public static String[] enemies = {"Skugg Troll", "Skugg Troll", "Mörkrets häxa", "Skugg spindel", "Skugg spindel"};
 
     //Story element
-    public static int place = 0, act;
+    public static int place = 0, act = 1;
     public static String[] places = {"Den tysta skogen", "De övergivna byarna", "Älven och fjällen", "Kebnekaises topp"};
+
     //Metod för att få input i konsolen
     public static int readInt(String prompt, int useChoices) {
         int input;
@@ -95,8 +101,86 @@ public class Game {
         gameLoop();
     }
 
+    public static void checkAct() {
+        //Byter act baserad på xp
+        if (player.getXp() >= 10 && act == 1) {
+            act = 2;
+            place = 1;
+            Story.printFirstActOutro();
+            //Låt spelaren levla upp
+            player.chooseTrait();
+            //story
+            Story.printSecondActIntro();
+            //Ny värden för fiender
+            enemies[0] = "Skugg troll";
+            enemies[1] = "Mörkrets häxa";
+            enemies[2] = "Varg flock";
+            enemies[3] = "Förtrollad Skogshuggare";
+            enemies[4] = "Cat in a hat";
+            // Ge värden till encounters
+            encounters[0] = "Battle";
+            encounters[1] = "Battle";
+            encounters[2] = "Battle";
+            encounters[3] = "Rest";
+            encounters[4] = "Shop";
+            //Ge fullt hp
+            //player.getHp() = player.getMaxHP();
+        } else if (player.getXp() >= 50 && act == 2) {
+            act = 3;
+            place = 2;
+            Story.printSecondActOutro();
+            //LVL UP
+            player.chooseTrait();
+            Story.printThirdActIntro();
+            //Ny värden för fiender
+            enemies[0] = "Mörkrets Clown";
+            enemies[1] = "Gastar";
+            enemies[2] = "Mörkrets Clown";
+            enemies[3] = "Hemsökt flicka";
+            enemies[4] = "Skogs Troll";
+            // Ge värden till encounters
+            encounters[0] = "Battle";
+            encounters[1] = "Battle";
+            encounters[2] = "Battle";
+            encounters[3] = "Battle";
+            encounters[4] = "Shop";
+            // heal
+          //  player.getHp() = player.getMaxHP();
+        } else if (player.getXp() >= 100 && act == 3) {
+            act = 4;
+            place = 3;
+            Story.printThirdActOutro();
+            //lvl up
+            player.chooseTrait();
+            Story.printFourthActIntro();
+            // heal up
+           // player.getHp() = player.getMaxHP();
+            //Finalbattle
+
+
+        }
+    }
+
+    public static void randomEncounter() {
+        int encounter = (int) (Math.random() * encounters.length);
+        //Kallar på respektivte metoder
+        if (encounters[encounter].equals("Battle")) {
+            //Random battle
+        } else if (encounters[encounter].equals("Rest")) {
+            //Vila
+        } else {
+//shop
+        }    //shop();
+
+    }
+
     //Metod för att fortsätta resan
     public static void continueJourney() {
+        //Checka ifall act måste öka
+        checkAct();
+        //Checka om spelet inte är i förra acten
+        if (act != 4)
+            randomEncounter();
 
     }
 
